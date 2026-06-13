@@ -1,5 +1,0 @@
-Flask
-mysql-connector-python
-bcrypt
-PyPDF2
-Werkzeug
