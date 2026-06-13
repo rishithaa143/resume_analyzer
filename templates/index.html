@@ -1,0 +1,23 @@
+<html>
+<head>
+
+<title>
+    TO-DO list</title>
+    </head>
+    <body>
+        <h1> TO DO list</h1>
+        <form method="POST">
+            <input type="text" name="task" placeholder="enter task">
+        <button type="submit">Add Task</button>
+    
+        </form>
+    
+
+{% for task in tasks %}
+<p>{{task[1]}} ({{task[3]}})
+    <a href ="/complete/{{task[0]}}">complete</a>
+    <a href="/delete/{{task[0]}}">delete</a>
+</p>
+{% endfor %}
+    </body>
+</html>

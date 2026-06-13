@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f4f6f8;
+            text-align: center;
+        }
+
+        .container {
+            margin-top: 100px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 15px;
+            padding: 12px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .logout {
+            background-color: red;
+        }
+
+        .logout:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Welcome {{ session['user'] }}</h1>
+
+        <a href="/upload" class="btn">Upload Resume</a>
+        <a href="/results" class="btn">View Analysis</a>
+        <a href="/logout" class="btn logout">Logout</a>
+    </div>
+    <h2>Upload Resume</h2>
+
+<form method="POST" action="/upload" enctype="multipart/form-data">
+    <input type="file" name="resume" required>
+    <button type="submit">Upload Resume</button>
+</form>
+<hr>
+
+
+</body>
+</html>
