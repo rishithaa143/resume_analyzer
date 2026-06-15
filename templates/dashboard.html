@@ -2,29 +2,51 @@
 <html>
 <head>
     <title>Dashboard</title>
+
     <style>
         body {
             font-family: Arial;
             background-color: #f4f6f8;
+            margin: 0;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .main {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 80px;
+        }
+
+        .left, .right {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+            width: 300px;
             text-align: center;
         }
 
-        .container {
-            margin-top: 100px;
-        }
-
-        h1 {
-            color: #333;
+        h3 {
+            margin-bottom: 20px;
         }
 
         .btn {
-            display: inline-block;
-            margin: 15px;
-            padding: 12px 20px;
+            display: block;
+            width: 100%;
+            margin-top: 15px;
+            padding: 12px;
             background-color: #007bff;
             color: white;
-            text-decoration: none;
+            border: none;
             border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
         }
 
         .btn:hover {
@@ -38,25 +60,46 @@
         .logout:hover {
             background-color: darkred;
         }
+
+        input[type="file"] {
+            margin-top: 10px;
+        }
+
     </style>
 </head>
+
 <body>
 
-    <div class="container">
-        <h1>Welcome {{ session['user'] }}</h1>
+<!-- TOP -->
+<div class="header">
+    <h2>Welcome {{ session['user'] }}</h2>
+</div>
 
-        <a href="/upload" class="btn">Upload Resume</a>
-        <a href="/results" class="btn">View Analysis</a>
+<!-- MAIN LAYOUT -->
+<div class="main">
+
+    <!-- LEFT SIDE -->
+    <div class="left">
+        <h3>Upload Resume</h3>
+
+        <form method="POST" action="/upload" enctype="multipart/form-data">
+            <input type="file" name="resume" accept=".pdf" required>
+            <button type="submit" class="btn">Upload Resume</button>
+        </form>
+
         <a href="/logout" class="btn logout">Logout</a>
     </div>
-    <h2>Upload Resume</h2>
 
-<form method="POST" action="/upload" enctype="multipart/form-data">
-    <input type="file" name="resume" required>
-    <button type="submit">Upload Resume</button>
-</form>
-<hr>
+    <!-- RIGHT SIDE -->
+    <div class="right">
+        <h3>Analysis</h3>
 
+        <a href="/results" class="btn">View Analysis</a>
+
+        <a href="/results" class="btn">Analyze Resume</a>
+    </div>
+
+</div>
 
 </body>
 </html>
